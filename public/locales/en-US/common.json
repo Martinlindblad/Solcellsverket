@@ -1,0 +1,31 @@
+{
+  "common": {
+    "homepage": "Homepage",
+    "logoImageAltText": "Logo"
+  },
+  "price": {
+    "free": "Free"
+  },
+  "navigation": {
+    "mobileMenuButton": "Open menu"
+  },
+  "time": {
+    "month": "Month"
+  },
+  "socials": {
+    "findUsOn": "Find us on",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
+  },
+  "legal": {
+    "copyright": "© Copyright {{ year }}",
+    "manageConsent": "Manage cookie consent (Consent changes require a manual page refresh)"
+  },
+  "error": {
+    "code": "{{code}} error",
+    "componentNotFound": "Component not found.",
+    "somethingWentWrong": "Something went wrong, check your url and try again"
+  }
+}
