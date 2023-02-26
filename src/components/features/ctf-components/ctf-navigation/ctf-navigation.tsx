@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: 1.9,
     marginRight: theme.spacing(8),
     position: 'relative',
-
     [theme.breakpoints.up('lg')]: {
       marginRight: theme.spacing(10),
     },
 
     '& a': {
       cursor: 'pointer',
+      textTransform: 'capitalize',
       display: 'inline-block',
       transition: 'transform 0.2s ease-in-out',
     },
@@ -59,8 +59,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     top: 'calc(100% - 2rem)',
     transform: 'translateY(20%)',
     transition: 'all 0.3s ease-in-out',
+
+    [theme.breakpoints.up('lg')]: {
+      minWidth: '280px',
+    },
   },
   submenuItem: {
+    borderBottom: '1px solid #ddd',
+    paddingTop: '4px',
     '&:hover, &:focus, &:focus-within': {
       '& > a': {
         transform: 'translateY(-4px)',

@@ -185,7 +185,10 @@ bower_components
 .bower-tmp
 /public/data/mind.json
 
+# local env files
 .env
+.env*.local
+.env*.production
 
 ### Intellij ###
 .idea/
