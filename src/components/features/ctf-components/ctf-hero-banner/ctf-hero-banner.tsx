@@ -9,6 +9,7 @@ import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtex
 import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
+import ContactForm from '../../contact-form/contact-form';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -35,11 +36,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: 'auto',
     maxWidth: '125.8rem',
     padding: theme.spacing(33, 0, 33),
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'relative',
     width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
     '@media (min-height: 91.2em)': {
       padding: theme.spacing(39, 0, 39),
     },
+  },
+
+  innerHeroTextContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 20,
+    minWidth: '50%',
   },
 
   partialBgContainer: {
@@ -147,21 +159,26 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           </Typography>
         )}
         */}
-        {headline && (
-          <Typography
-            variant="h1"
-            className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
-            {headline}
-          </Typography>
-        )}
-        {bodyText && (
-          <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
-            <div style={{ color: colorConfig.textColor }}>
-              <CtfRichtext {...bodyText} className={classes.body} />
-            </div>
-          </LayoutContext.Provider>
-        )}
+
+        <div className={classes.innerHeroTextContainer}>
+          {headline && (
+            <Typography
+              variant="h1"
+              className={classes.headline}
+              style={{ color: colorConfig.headlineColor }}>
+              {headline}
+            </Typography>
+          )}
+          {bodyText && (
+            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
+              <div style={{ color: colorConfig.textColor }}>
+                <CtfRichtext {...bodyText} className={classes.body} />
+              </div>
+            </LayoutContext.Provider>
+          )}
+        </div>
+        <ContactForm />
+
         {targetPage && ctaText && (
           <div className={classes.ctaContainer}>
             <PageLink
