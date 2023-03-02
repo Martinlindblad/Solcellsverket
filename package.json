@@ -19,7 +19,8 @@
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
     "lint-fix": "yarn lint --fix",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
+    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -65,9 +66,9 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/eslint-parser": "^7.19.1",
-    "@graphql-codegen/cli": "^3.2.1",
-    "@graphql-codegen/client-preset": "^2.1.0",
-    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/cli": "3.2.1",
+    "@graphql-codegen/client-preset": "2.1.0",
+    "@graphql-codegen/introspection": "3.0.1",
     "@graphql-codegen/near-operation-file-preset": "^2.4.1",
     "@graphql-codegen/typescript": "2.7.3",
     "@graphql-codegen/typescript-operations": "2.5.3",
