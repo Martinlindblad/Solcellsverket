@@ -6,7 +6,7 @@ const pageTopicMap = {
       module => module.CtfProductGql,
     ),
   ),
-  List: dynamic(() =>
+  Accordion: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-accordion/ctf-accordion-gql').then(
       module => module.CtfAccordionGql,
     ),

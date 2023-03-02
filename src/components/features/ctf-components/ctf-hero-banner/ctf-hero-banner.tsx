@@ -3,13 +3,13 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
+import ContactForm from '../../contact-form/contact-form';
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
-import ContactForm from '../../contact-form/contact-form';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

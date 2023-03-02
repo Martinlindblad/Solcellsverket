@@ -1,7 +1,9 @@
 import { Container } from '@mui/material';
+
+// import { useCtfAccordionQuery } from '@src/components/features/ctf-components/ctf-accordion/__generated/ctf-accordion.generated';
+
 import Head from 'next/head';
 
-import { useCtfAccordionQuery } from '@src/components/features/ctf-components/ctf-accordion/__generated/ctf-accordion.generated';
 import { CtfAccordion } from './ctf-accordion';
 
 import { EntryNotFound } from '@src/components/features/errors/entry-not-found';
@@ -23,7 +25,7 @@ export const CtfAccordionGql = (props: CtfAccordionGqlPropsInterface) => {
     return null;
   }
 
-  if (!data.list) {
+  if (!data.accordion) {
     return (
       <Container>
         <EntryNotFound />
@@ -31,7 +33,7 @@ export const CtfAccordionGql = (props: CtfAccordionGqlPropsInterface) => {
     );
   }
 
-  const accordion = data.list;
+  const accordion = data.accordion;
 
   return (
     <>
@@ -48,3 +50,9 @@ export const CtfAccordionGql = (props: CtfAccordionGqlPropsInterface) => {
     </>
   );
 };
+function useCtfAccordionQuery(arg0: { id: string; locale: string; preview: boolean | undefined }): {
+  isLoading: any;
+  data: any;
+} {
+  throw new Error('Function not implemented.');
+}

@@ -17,6 +17,105 @@ export type Scalars = {
   Quality: any;
 };
 
+/** Accordion for qna [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/accordion) */
+export type Accordion = Entry & {
+  __typename?: 'Accordion';
+  accordionItemsCollection?: Maybe<AccordionAccordionItemsCollection>;
+  accordionTitle?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<AccordionLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** Accordion for qna [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/accordion) */
+export type AccordionAccordionItemsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** Accordion for qna [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/accordion) */
+export type AccordionAccordionTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Accordion for qna [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/accordion) */
+export type AccordionLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type AccordionAccordionItemsCollection = {
+  __typename?: 'AccordionAccordionItemsCollection';
+  items: Array<Maybe<AccordionAccordionItemsItem>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type AccordionAccordionItemsItem = TopicProduct | TopicProductFeature;
+
+export type AccordionCollection = {
+  __typename?: 'AccordionCollection';
+  items: Array<Maybe<Accordion>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type AccordionFilter = {
+  AND?: InputMaybe<Array<InputMaybe<AccordionFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<AccordionFilter>>>;
+  accordionItemsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  accordionTitle?: InputMaybe<Scalars['String']>;
+  accordionTitle_contains?: InputMaybe<Scalars['String']>;
+  accordionTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  accordionTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  accordionTitle_not?: InputMaybe<Scalars['String']>;
+  accordionTitle_not_contains?: InputMaybe<Scalars['String']>;
+  accordionTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type AccordionLinkingCollections = {
+  __typename?: 'AccordionLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageCollection?: Maybe<PageCollection>;
+};
+
+
+export type AccordionLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AccordionLinkingCollectionsPageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum AccordionOrder {
+  AccordionTitleAsc = 'accordionTitle_ASC',
+  AccordionTitleDesc = 'accordionTitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type Asset = {
   __typename?: 'Asset';
@@ -2000,103 +2099,6 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']>;
 };
 
-/** [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/list) */
-export type List = Entry & {
-  __typename?: 'List';
-  accordionItemCollection?: Maybe<ListAccordionItemCollection>;
-  accordionTitle?: Maybe<Scalars['String']>;
-  contentfulMetadata: ContentfulMetadata;
-  linkedFrom?: Maybe<ListLinkingCollections>;
-  sys: Sys;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/list) */
-export type ListAccordionItemCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/list) */
-export type ListAccordionTitleArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/list) */
-export type ListLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ListAccordionItemCollection = {
-  __typename?: 'ListAccordionItemCollection';
-  items: Array<Maybe<TopicProductFeature>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type ListCollection = {
-  __typename?: 'ListCollection';
-  items: Array<Maybe<List>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type ListFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ListFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ListFilter>>>;
-  accordionItemCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  accordionTitle?: InputMaybe<Scalars['String']>;
-  accordionTitle_contains?: InputMaybe<Scalars['String']>;
-  accordionTitle_exists?: InputMaybe<Scalars['Boolean']>;
-  accordionTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  accordionTitle_not?: InputMaybe<Scalars['String']>;
-  accordionTitle_not_contains?: InputMaybe<Scalars['String']>;
-  accordionTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type ListLinkingCollections = {
-  __typename?: 'ListLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-  pageCollection?: Maybe<PageCollection>;
-};
-
-
-export type ListLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type ListLinkingCollectionsPageCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum ListOrder {
-  AccordionTitleAsc = 'accordionTitle_ASC',
-  AccordionTitleDesc = 'accordionTitle_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 /** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/menuGroup) */
 export type MenuGroup = Entry & {
   __typename?: 'MenuGroup';
@@ -2407,7 +2409,7 @@ export type PageExtraSectionCollection = {
   total: Scalars['Int'];
 };
 
-export type PageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock | List;
+export type PageExtraSectionItem = Accordion | ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock;
 
 export type PageFilter = {
   AND?: InputMaybe<Array<InputMaybe<PageFilter>>>;
@@ -2731,6 +2733,8 @@ export enum PostOrder {
 
 export type Query = {
   __typename?: 'Query';
+  accordion?: Maybe<Accordion>;
+  accordionCollection?: Maybe<AccordionCollection>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   author?: Maybe<Author>;
@@ -2752,8 +2756,6 @@ export type Query = {
   entryCollection?: Maybe<EntryCollection>;
   footerMenu?: Maybe<FooterMenu>;
   footerMenuCollection?: Maybe<FooterMenuCollection>;
-  list?: Maybe<List>;
-  listCollection?: Maybe<ListCollection>;
   menuGroup?: Maybe<MenuGroup>;
   menuGroupCollection?: Maybe<MenuGroupCollection>;
   navigationMenu?: Maybe<NavigationMenu>;
@@ -2772,6 +2774,23 @@ export type Query = {
   topicProductCollection?: Maybe<TopicProductCollection>;
   topicProductFeature?: Maybe<TopicProductFeature>;
   topicProductFeatureCollection?: Maybe<TopicProductFeatureCollection>;
+};
+
+
+export type QueryAccordionArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryAccordionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<AccordionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AccordionFilter>;
 };
 
 
@@ -2952,23 +2971,6 @@ export type QueryFooterMenuCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<FooterMenuFilter>;
-};
-
-
-export type QueryListArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryListCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<ListOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ListFilter>;
 };
 
 
@@ -3811,13 +3813,13 @@ export type TopicProductFeatureFilter = {
 
 export type TopicProductFeatureLinkingCollections = {
   __typename?: 'TopicProductFeatureLinkingCollections';
+  accordionCollection?: Maybe<AccordionCollection>;
   entryCollection?: Maybe<EntryCollection>;
-  listCollection?: Maybe<ListCollection>;
   topicProductCollection?: Maybe<TopicProductCollection>;
 };
 
 
-export type TopicProductFeatureLinkingCollectionsEntryCollectionArgs = {
+export type TopicProductFeatureLinkingCollectionsAccordionCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -3825,7 +3827,7 @@ export type TopicProductFeatureLinkingCollectionsEntryCollectionArgs = {
 };
 
 
-export type TopicProductFeatureLinkingCollectionsListCollectionArgs = {
+export type TopicProductFeatureLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -3950,9 +3952,18 @@ export type TopicProductFilter = {
 
 export type TopicProductLinkingCollections = {
   __typename?: 'TopicProductLinkingCollections';
+  accordionCollection?: Maybe<AccordionCollection>;
   componentProductTableCollection?: Maybe<ComponentProductTableCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageCollection?: Maybe<PageCollection>;
+};
+
+
+export type TopicProductLinkingCollectionsAccordionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
