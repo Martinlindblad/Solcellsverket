@@ -3,10 +3,15 @@ fragment AccordionFields on Accordion {
     id
   }
   accordionTitle
+  accordionItemsCollection(limit: 30) {
+    items {
+      ...AccordionAccordionItemsItem
+    }
+  }
 }
 
 query CtfAccordion($id: String!, $locale: String, $preview: Boolean) {
-  accordion($id: String, preview: $preview, locale: $locale) {
+  accordion(id: $id, preview: $preview, locale: $locale) {
     ...AccordionFields
   }
 }

@@ -6,11 +6,7 @@ const pageTopicMap = {
       module => module.CtfProductGql,
     ),
   ),
-  Accordion: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-accordion/ctf-accordion-gql').then(
-      module => module.CtfAccordionGql,
-    ),
-  ),
+
   TopicBusinessInfo: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-business-info/ctf-business-info-gql').then(
       module => module.CtfBusinessInfoGql,
@@ -21,9 +17,19 @@ const pageTopicMap = {
       module => module.CtfProductTableGql,
     ),
   ),
+  Accordion: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-accordion/ctf-accordion-gql').then(
+      module => module.CtfAccordionGql,
+    ),
+  ),
 };
 
 export const componentMap = {
+  Accordion: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-accordion/ctf-accordion-gql').then(
+      module => module.CtfAccordionGql,
+    ),
+  ),
   ComponentCta: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-cta/ctf-cta').then(module => module.CtfCta),
   ),
@@ -99,6 +105,11 @@ export const componentGqlMap = {
   ComponentFooter: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-footer/ctf-footer-gql').then(
       module => module.CtfFooterGql,
+    ),
+  ),
+  Accordion: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-accordion/ctf-accordion-gql').then(
+      module => module.CtfAccordionGql,
     ),
   ),
 };

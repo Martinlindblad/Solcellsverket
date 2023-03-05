@@ -33,4 +33,7 @@ fragment ComponentReferenceFields on Entry {
   ... on TopicProduct {
     internalName
   }
+  ... on Accordion {
+    internalName
+  }
 }
