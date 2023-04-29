@@ -1,8 +1,3 @@
-console.log(
-  process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,
-  'NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID',
-);
-
 export const fetchConfig = {
   endpoint: `https://graphql.contentful.com/content/v1/spaces/${String(
     process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,
