@@ -1,3 +1,73 @@
+"""
+Accordion for qna [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/accordion)
+"""
+type Accordion implements Entry {
+  accordionItemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AccordionAccordionItemsCollection
+  accordionTitle(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): AccordionLinkingCollections
+  sys: Sys!
+}
+
+type AccordionAccordionItemsCollection {
+  items: [AccordionAccordionItemsItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+union AccordionAccordionItemsItem = TopicProduct | TopicProductFeature
+
+type AccordionCollection {
+  items: [Accordion]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AccordionFilter {
+  AND: [AccordionFilter]
+  OR: [AccordionFilter]
+  accordionItemsCollection_exists: Boolean
+  accordionTitle: String
+  accordionTitle_contains: String
+  accordionTitle_exists: Boolean
+  accordionTitle_in: [String]
+  accordionTitle_not: String
+  accordionTitle_not_contains: String
+  accordionTitle_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+type AccordionLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum AccordionOrder {
+  accordionTitle_ASC
+  accordionTitle_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
   contentType(locale: String): String
@@ -90,11 +160,13 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
+  authorCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AuthorCollection
   componentDuplexCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentDuplexCollection
   componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   componentInfoBlockCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentInfoBlockCollection
   componentQuoteCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentQuoteCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  postCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PostCollection
   seoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SeoCollection
   topicBusinessInfoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TopicBusinessInfoCollection
   topicPersonCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TopicPersonCollection
@@ -125,7 +197,58 @@ enum AssetOrder {
 }
 
 """
-Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentCta)
+[See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/author)
+"""
+type Author implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): AuthorLinkingCollections
+  name(locale: String): String
+  picture(locale: String, preview: Boolean): Asset
+  sys: Sys!
+}
+
+type AuthorCollection {
+  items: [Author]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AuthorFilter {
+  AND: [AuthorFilter]
+  OR: [AuthorFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  picture_exists: Boolean
+  sys: SysFilter
+}
+
+type AuthorLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  postCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PostCollection
+}
+
+enum AuthorOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentCta)
 """
 type ComponentCta implements Entry {
   colorPalette(locale: String): String
@@ -240,10 +363,10 @@ type ComponentCtaSublineLinks {
   entries: ComponentCtaSublineEntries!
 }
 
-union ComponentCtaTargetPage = Page
+union ComponentCtaTargetPage = Page | Post
 
 """
-Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentDuplex)
+Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentDuplex)
 """
 type ComponentDuplex implements Entry {
   bodyText(locale: String): ComponentDuplexBodyText
@@ -362,10 +485,10 @@ enum ComponentDuplexOrder {
   sys_publishedVersion_DESC
 }
 
-union ComponentDuplexTargetPage = Page
+union ComponentDuplexTargetPage = Page | Post
 
 """
-Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentHeroBanner)
+Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentHeroBanner)
 """
 type ComponentHeroBanner implements Entry {
   bodyText(locale: String): ComponentHeroBannerBodyText
@@ -484,10 +607,10 @@ enum ComponentHeroBannerOrder {
   sys_publishedVersion_DESC
 }
 
-union ComponentHeroBannerTargetPage = Page
+union ComponentHeroBannerTargetPage = Page | Post
 
 """
-Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentInfoBlock)
+Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentInfoBlock)
 """
 type ComponentInfoBlock implements Entry {
   block1Body(locale: String): ComponentInfoBlockBlock1Body
@@ -647,7 +770,7 @@ enum ComponentInfoBlockOrder {
 }
 
 """
-Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentProductTable)
+Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentProductTable)
 """
 type ComponentProductTable implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -684,6 +807,7 @@ input ComponentProductTableFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  products: cfTopicProductNestedFilter
   productsCollection_exists: Boolean
   subline: String
   subline_contains: String
@@ -725,7 +849,7 @@ type ComponentProductTableProductsCollection {
 }
 
 """
-Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentQuote)
+Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentQuote)
 """
 type ComponentQuote implements Entry {
   colorPalette(locale: String): String
@@ -823,7 +947,7 @@ type ComponentQuoteQuoteLinks {
 }
 
 """
-Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentTextBlock)
+Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/componentTextBlock)
 """
 type ComponentTextBlock implements Entry {
   body(locale: String): ComponentTextBlockBody
@@ -994,7 +1118,7 @@ enum EntryOrder {
 }
 
 """
-Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu)
+Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/footerMenu)
 """
 type FooterMenu implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1050,6 +1174,7 @@ input FooterMenuFilter {
   linkedinLink_not: String
   linkedinLink_not_contains: String
   linkedinLink_not_in: [String]
+  menuItems: cfMenuGroupNestedFilter
   menuItemsCollection_exists: Boolean
   sys: SysFilter
   twitterLink: String
@@ -1230,7 +1355,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup)
+A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/menuGroup)
 """
 type MenuGroup implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1256,7 +1381,7 @@ type MenuGroupFeaturedPagesCollection {
   total: Int!
 }
 
-union MenuGroupFeaturedPagesItem = Page
+union MenuGroupFeaturedPagesItem = Page | Post
 
 input MenuGroupFilter {
   AND: [MenuGroupFilter]
@@ -1281,7 +1406,7 @@ input MenuGroupFilter {
   sys: SysFilter
 }
 
-union MenuGroupGroupLink = Page
+union MenuGroupGroupLink = Page | Post
 
 type MenuGroupLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
@@ -1305,7 +1430,7 @@ enum MenuGroupOrder {
 }
 
 """
-Navigation menu in the header [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/navigationMenu)
+Navigation menu in the header [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/navigationMenu)
 """
 type NavigationMenu implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1333,6 +1458,7 @@ input NavigationMenuFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  menuItems: cfMenuGroupNestedFilter
   menuItemsCollection_exists: Boolean
   sys: SysFilter
 }
@@ -1362,7 +1488,7 @@ enum NavigationMenuOrder {
 }
 
 """
-Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/page)
+Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/page)
 """
 type Page implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1391,7 +1517,7 @@ type PageExtraSectionCollection {
   total: Int!
 }
 
-union PageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+union PageExtraSectionItem = Accordion | ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 input PageFilter {
   AND: [PageFilter]
@@ -1463,13 +1589,131 @@ type PageTopSectionCollection {
 union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 """
+[See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/post)
+"""
+type Post implements Entry {
+  author(locale: String, preview: Boolean): Author
+  content(locale: String): PostContent
+  contentfulMetadata: ContentfulMetadata!
+  coverImage(locale: String, preview: Boolean): Asset
+  date(locale: String): DateTime
+  excerpt(locale: String): String
+  linkedFrom(allowedLocales: [String]): PostLinkingCollections
+  slug(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type PostCollection {
+  items: [Post]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PostContent {
+  json: JSON!
+  links: PostContentLinks!
+}
+
+type PostContentAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PostContentEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PostContentLinks {
+  assets: PostContentAssets!
+  entries: PostContentEntries!
+}
+
+input PostFilter {
+  AND: [PostFilter]
+  OR: [PostFilter]
+  author: cfAuthorNestedFilter
+  author_exists: Boolean
+  content_contains: String
+  content_exists: Boolean
+  content_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  coverImage_exists: Boolean
+  date: DateTime
+  date_exists: Boolean
+  date_gt: DateTime
+  date_gte: DateTime
+  date_in: [DateTime]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_not: DateTime
+  date_not_in: [DateTime]
+  excerpt: String
+  excerpt_contains: String
+  excerpt_exists: Boolean
+  excerpt_in: [String]
+  excerpt_not: String
+  excerpt_not_contains: String
+  excerpt_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type PostLinkingCollections {
+  componentCtaCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCtaCollection
+  componentDuplexCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentDuplexCollection
+  componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  menuGroupCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupCollection
+}
+
+enum PostOrder {
+  date_ASC
+  date_DESC
+  excerpt_ASC
+  excerpt_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
 scalar Quality
 
 type Query {
+  accordion(id: String!, locale: String, preview: Boolean): Accordion
+  accordionCollection(limit: Int = 100, locale: String, order: [AccordionOrder], preview: Boolean, skip: Int = 0, where: AccordionFilter): AccordionCollection
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  author(id: String!, locale: String, preview: Boolean): Author
+  authorCollection(limit: Int = 100, locale: String, order: [AuthorOrder], preview: Boolean, skip: Int = 0, where: AuthorFilter): AuthorCollection
   componentCta(id: String!, locale: String, preview: Boolean): ComponentCta
   componentCtaCollection(limit: Int = 100, locale: String, order: [ComponentCtaOrder], preview: Boolean, skip: Int = 0, where: ComponentCtaFilter): ComponentCtaCollection
   componentDuplex(id: String!, locale: String, preview: Boolean): ComponentDuplex
@@ -1493,6 +1737,8 @@ type Query {
   navigationMenuCollection(limit: Int = 100, locale: String, order: [NavigationMenuOrder], preview: Boolean, skip: Int = 0, where: NavigationMenuFilter): NavigationMenuCollection
   page(id: String!, locale: String, preview: Boolean): Page
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
+  post(id: String!, locale: String, preview: Boolean): Post
+  postCollection(limit: Int = 100, locale: String, order: [PostOrder], preview: Boolean, skip: Int = 0, where: PostFilter): PostCollection
   seo(id: String!, locale: String, preview: Boolean): Seo
   seoCollection(limit: Int = 100, locale: String, order: [SeoOrder], preview: Boolean, skip: Int = 0, where: SeoFilter): SeoCollection
   topicBusinessInfo(id: String!, locale: String, preview: Boolean): TopicBusinessInfo
@@ -1506,7 +1752,7 @@ type Query {
 }
 
 """
-Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/seo)
+Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/seo)
 """
 type Seo implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1635,7 +1881,7 @@ input SysFilter {
 }
 
 """
-Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicBusinessInfo)
+Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/topicBusinessInfo)
 """
 type TopicBusinessInfo implements Entry {
   body(locale: String): TopicBusinessInfoBody
@@ -1729,7 +1975,7 @@ enum TopicBusinessInfoOrder {
 }
 
 """
-Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicPerson)
+Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/topicPerson)
 """
 type TopicPerson implements Entry {
   avatar(locale: String, preview: Boolean): Asset
@@ -1840,7 +2086,7 @@ enum TopicPersonOrder {
 }
 
 """
-Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicProduct)
+Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/topicProduct)
 """
 type TopicProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1883,7 +2129,7 @@ type TopicProductDescriptionLinks {
 }
 
 """
-Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicProductFeature)
+Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/bxfz60k6cfu7/content_types/topicProductFeature)
 """
 type TopicProductFeature implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1930,6 +2176,7 @@ input TopicProductFeatureFilter {
 }
 
 type TopicProductFeatureLinkingCollections {
+  accordionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AccordionCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   topicProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TopicProductCollection
 }
@@ -2006,6 +2253,7 @@ input TopicProductFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
+  features: cfTopicProductFeatureNestedFilter
   featuresCollection_exists: Boolean
   internalName: String
   internalName_contains: String
@@ -2034,6 +2282,7 @@ input TopicProductFilter {
 }
 
 type TopicProductLinkingCollections {
+  accordionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AccordionCollection
   componentProductTableCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentProductTableCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
@@ -2054,6 +2303,21 @@ enum TopicProductOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+input cfAuthorNestedFilter {
+  AND: [cfAuthorNestedFilter]
+  OR: [cfAuthorNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  picture_exists: Boolean
+  sys: SysFilter
 }
 
 input cfMenuGroupNestedFilter {
@@ -2112,4 +2376,66 @@ input cfSeoNestedFilter {
   title_not: String
   title_not_contains: String
   title_not_in: [String]
+}
+
+input cfTopicProductFeatureNestedFilter {
+  AND: [cfTopicProductFeatureNestedFilter]
+  OR: [cfTopicProductFeatureNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  longDescription_contains: String
+  longDescription_exists: Boolean
+  longDescription_not_contains: String
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_not_contains: String
+  sys: SysFilter
+}
+
+input cfTopicProductNestedFilter {
+  AND: [cfTopicProductNestedFilter]
+  OR: [cfTopicProductNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  featuredImage_exists: Boolean
+  featuresCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  price: Float
+  price_exists: Boolean
+  price_gt: Float
+  price_gte: Float
+  price_in: [Float]
+  price_lt: Float
+  price_lte: Float
+  price_not: Float
+  price_not_in: [Float]
+  sys: SysFilter
 }

@@ -29,7 +29,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
-        ) | null, children?: (
+        ) | { __typename?: 'Post' } | null, children?: (
           { __typename?: 'MenuGroupFeaturedPagesCollection' }
           & MenuGroupFieldsFragment
         ) | null } | null> } | null } | null> };

@@ -1,6 +1,6 @@
 import { Theme, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

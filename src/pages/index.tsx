@@ -11,7 +11,6 @@ import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 const LangPage: NextPage = () => {
   return <CtfPageGgl slug="/" />;
 };
-
 export const getServerSideProps = async ({ locale }: NextPageContext) => {
   try {
     const queryClient = new QueryClient();

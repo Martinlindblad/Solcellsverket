@@ -1,8 +1,7 @@
 import { Avatar as MuiAvatar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useMemo } from 'react';
-
-import { AssetFieldsFragment } from '@src/lib/__generated/graphql.types';
+import { AssetFieldsFragment } from '../ctf-components/ctf-asset/__generated/ctf-asset.generated';
 
 const useStyles = makeStyles(() => ({
   avatarRoot: {

@@ -27,7 +27,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type CtaFieldsFragment = { __typename: 'ComponentCta', internalName?: string | null, headline?: string | null, ctaText?: string | null, urlParameters?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, subline?: { __typename?: 'ComponentCtaSubline', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | null };
+  ) | { __typename?: 'Post' } | null };
 
 export type CtfCtaQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
