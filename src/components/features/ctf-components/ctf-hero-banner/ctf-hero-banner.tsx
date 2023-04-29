@@ -177,8 +177,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           )}
         </div>
         <ContactForm />
-
-        {targetPage && ctaText && (
+        {targetPage && targetPage.__typename === 'Page' && targetPage.slug && ctaText && (
           <div className={classes.ctaContainer}>
             <PageLink
               page={targetPage}

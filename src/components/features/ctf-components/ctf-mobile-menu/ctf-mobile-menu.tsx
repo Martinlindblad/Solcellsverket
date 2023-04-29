@@ -80,7 +80,11 @@ export const CtfMobileMenu = (props: MobileMenuPropsInterface) => {
                 {!menuItem?.link ? (
                   menuItem?.label
                 ) : (
-                  <Link href={`/${menuItem?.link?.slug}`}>{menuItem?.label}</Link>
+                  <>
+                    {menuItem.link.__typename === 'Page' && (
+                      <Link href={`/${menuItem?.link?.slug}`}>{menuItem?.label}</Link>
+                    )}
+                  </>
                 )}
                 {!menuItem?.link && menuItem?.children && (
                   <ul className={classes.submenu}>{renderMobileMenuLinks(menuItem.children)}</ul>

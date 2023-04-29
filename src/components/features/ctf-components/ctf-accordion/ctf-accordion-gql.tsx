@@ -1,11 +1,11 @@
 import { Container } from '@mui/material';
+import { useCtfAccordionQuery } from './__generated/ctf-accordion.generated';
 
 import Head from 'next/head';
 
 import { CtfAccordion } from './ctf-accordion';
 
 import { EntryNotFound } from '@src/components/features/errors/entry-not-found';
-import { useCtfAccordionQuery } from './__generated/ctf-accordion.generated';
 
 interface CtfAccordionGqlPropsInterface {
   id: string;

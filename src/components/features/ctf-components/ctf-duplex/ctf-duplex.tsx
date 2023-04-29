@@ -115,7 +115,7 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           </div>
         </LayoutContext.Provider>
       )}
-      {targetPage && targetPage.slug && (
+      {targetPage && targetPage.__typename === 'Page' && targetPage.slug && (
         <div className={classes.ctaContainer}>
           <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
             {ctaText}
