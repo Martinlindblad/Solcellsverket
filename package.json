@@ -45,6 +45,7 @@
     "autoprefixer": "^10.4.13",
     "babel-plugin-polyfill-regenerator": "^0.4.1",
     "clsx": "^1.2.1",
+    "core-js": "^3.0.0-beta.1",
     "dotenv": "^16.0.1",
     "graphql": "^16.6.0",
     "intersection-observer": "^0.12.2",

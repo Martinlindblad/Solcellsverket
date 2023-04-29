@@ -142,17 +142,17 @@ export const CtfAccordion = props => {
                 {name}
               </Typography>
             )}
-            {description && (
+            {/* {description && (
               <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-description' }}>
                 <CtfRichtext {...description} className={classes.body} />
               </LayoutContext.Provider>
-            )}
+            )} */}
           </div>
-          {featuredImage && (
+          {/* {featuredImage && (
             <div className={classes.imageContainer}>
               <CtfAsset {...featuredImage} showDescription={false} className={classes.imageInner} />
             </div>
-          )}
+          )} */}
         </div>
       </Container>
     </>

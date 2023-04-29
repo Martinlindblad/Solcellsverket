@@ -29,7 +29,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type DuplexFieldsFragment = { __typename: 'ComponentDuplex', internalName?: string | null, containerLayout?: boolean | null, headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentDuplexBodyText', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | null, image?: (
+  ) | { __typename?: 'Post' } | null, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null };

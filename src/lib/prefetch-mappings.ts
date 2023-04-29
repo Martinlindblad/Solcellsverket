@@ -6,7 +6,7 @@ import { useCtfCtaQuery } from '@src/components/features/ctf-components/ctf-cta/
 import { useCtfDuplexQuery } from '@src/components/features/ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import { useCtfHeroBannerQuery } from '@src/components/features/ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { useCtfInfoBlockQuery } from '@src/components/features/ctf-components/ctf-info-block/__generated/ctf-info-block.generated';
-// import { useCtfAccordionQuery } from '@src/components/features/ctf-components/ctf-accordion/__generated/ctf-accordion.generated';
+import { useCtfAccordionQuery } from '@src/components/features/ctf-components/ctf-accordion/__generated/ctf-accordion.generated';
 import {
   CtfPersonQuery,
   useCtfPersonQuery,
@@ -36,5 +36,5 @@ export const prefetchMap = {
   TopicBusinessInfo: useCtfBusinessInfoQuery,
   TopicProduct: useCtfProductQuery,
   TopicPerson: useCtfPersonQuery,
-  // Accordion: useCtfAccordionQuery,
+  Accordion: useCtfAccordionQuery,
 };

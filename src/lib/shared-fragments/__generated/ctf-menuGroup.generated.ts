@@ -6,7 +6,7 @@ import { PageLinkFieldsFragmentDoc } from '../../../components/features/page-lin
 export type MenuGroupFieldsFragment = { __typename?: 'MenuGroupFeaturedPagesCollection', items: Array<(
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | null> };
+  ) | { __typename?: 'Post' } | null> };
 
 export const MenuGroupFieldsFragmentDoc = `
     fragment MenuGroupFields on MenuGroupFeaturedPagesCollection {

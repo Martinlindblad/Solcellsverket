@@ -1,11 +1,29 @@
 fragment AccordionFields on Accordion {
   sys {
     id
+    publishedAt
+    firstPublishedAt
   }
-  accordionTitle
-  accordionItemsCollection(limit: 30) {
+  internalName
+
+  accordionItemsCollection {
     items {
-      ...AccordionAccordionItemsItem
+      ... on TopicProductFeature {
+        __typename
+        sys {
+          id
+        }
+        internalName
+        name(locale: $locale)
+      }
+      ... on TopicProduct {
+        __typename
+        sys {
+          id
+        }
+        internalName
+        name(locale: $locale)
+      }
     }
   }
 }

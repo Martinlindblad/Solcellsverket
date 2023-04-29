@@ -159,7 +159,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           </Typography>
         )}
         */}
-        <h1>The value of customKey is: {process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID}</h1>
         <div className={classes.innerHeroTextContainer}>
           {headline && (
             <Typography
